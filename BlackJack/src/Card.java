@@ -1,25 +1,26 @@
 
-public class Card {
+class Card {
 	private CardValue value;
 	private CardSuit suit;
 	
-	public Card (CardValue value, CardSuit suit) {
+	Card (CardValue value, CardSuit suit) {
 		this.value = value;
 		this.suit = suit;
 	}
 	
-	public Card (CardValue value) {
+	Card (CardValue value) {
 		this.value = value;
 	}
 	
-	public CardValue getValue() {
+	CardValue getValue() {
 		return value;
 	}
 	
-	public CardSuit getSuit() {
+	CardSuit getSuit() {
 		return suit;
 	}
 	
+	@Override
 	public String toString() {
 		return printSuit() + printValue();
 	}

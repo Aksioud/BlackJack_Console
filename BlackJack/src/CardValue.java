@@ -1,5 +1,5 @@
 
-public enum CardValue {
+enum CardValue {
 	_2,
 	_3,
 	_4,

@@ -1,22 +1,22 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Deck {
+class Deck {
 
 	private ArrayList<Card> cards;
 	private DeckSize deckSize;
 	
-	public Deck(DeckSize deckSize) {
+	Deck(DeckSize deckSize) {
 		this.cards = new ArrayList<Card>();
 		this.deckSize = deckSize;
 		initializeDeck(deckSize);
 	}
 	
-	public DeckSize getDeckSize() {
+	DeckSize getDeckSize() {
 		return deckSize;
 	}
 	
-	public ArrayList<Card> getCards() {
+	ArrayList<Card> getCards() {
 		return cards;
 	}
 	
@@ -62,7 +62,7 @@ public class Deck {
 		}
 	}
 	
-	public void shuffle(int count) {
+	void shuffle(int count) {
 		for (int i = 0; i < count; i++)
 			Collections.shuffle(cards);
 	}

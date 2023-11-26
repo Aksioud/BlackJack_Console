@@ -1,5 +1,5 @@
 
-public enum DeckSize {
+enum DeckSize {
 	_24,
 	_32,
 	_36,

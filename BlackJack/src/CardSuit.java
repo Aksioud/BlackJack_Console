@@ -1,5 +1,5 @@
 
-public enum CardSuit {
+enum CardSuit {
 	Hearts,
 	Clubs,
 	Diamonds,
