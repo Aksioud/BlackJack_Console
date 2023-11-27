@@ -1,26 +1,43 @@
-import java.util.List;
+import java.util.Scanner;
 
-public class BlackJack {
+class BlackJack {
 	
 	public static void main(String[] args) {
 		
-		Deck deck = new Deck(DeckSize._52);
-		List<Card> cards = deck.getCards();
+		boolean selected = false;
+		byte choise = 0;
 		
-		deck.shuffle(3);
-		
-		int sum = 0;
-		for(Card c: cards) { 
-			System.out.print(c.toString());
-			System.out.print(" value = " + getCardValue(c));
-			sum += getCardValue(c);
-			System.out.println(" sum = " + sum);
+		Scanner scanner = new Scanner(System.in);
+		while (!selected) {
+			System.out.println("1 - Начать игру");
+			System.out.println("2 - Помощь");
+			System.out.println("3 - Выход");
+			String ch = scanner.nextLine();
+			switch (ch){
+				case "1":
+				case "2":
+				case "3":
+					selected = true;
+					choise = Byte.valueOf(ch);
 			}
+		}
 		
+		scanner.close();
+		
+		switch(choise) {
+			case 3:
+				System.exit(0);
+			case 2:
+				break;
+			case 1:
+				Game game = new Game();
+				game.start();
+				break;	
+		}
 		
 	}
 	
-	private static int getCardValue(Card card) {
+	static int getCardValue(Card card, int sum) {
 		int res = 0;
 		
 		if (card == null) return res;
@@ -29,9 +46,13 @@ public class BlackJack {
 		String valueString = value.toString();
 		if(valueString.contains("_")) {
 			res = Integer.valueOf(valueString.replace("_", ""));
+			return res;
 		}
 		
 		switch(value) {
+			case Ace:
+				res = sum + 11 > 21 ? 1 : 11;
+				break;
 			case Jack:
 			case Queen:
 			case King:

@@ -1,13 +1,14 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Stack;
 
 class Deck {
 
-	private ArrayList<Card> cards;
+	private ArrayList<Card> cards = new ArrayList<Card>();
 	private DeckSize deckSize;
+	private static Stack<Card> stack;
 	
 	Deck(DeckSize deckSize) {
-		this.cards = new ArrayList<Card>();
 		this.deckSize = deckSize;
 		initializeDeck(deckSize);
 	}
@@ -54,6 +55,7 @@ class Deck {
 			cards.add(new Card(CardValue.Joker));
 			cards.add(new Card(CardValue.Joker));
 		}
+		
 	}
 	
 	private void addCards(CardValue value) {
@@ -66,4 +68,16 @@ class Deck {
 		for (int i = 0; i < count; i++)
 			Collections.shuffle(cards);
 	}
+	
+	void createStack() {
+		stack = new Stack<Card>();
+		
+		for(Card c : cards)
+			stack.push(c);
+	}
+
+	static Card getCard() {
+		return stack.pop();
+	}
+	
 }
