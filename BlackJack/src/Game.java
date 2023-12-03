@@ -9,21 +9,25 @@ class Game {
 		
 		Player human = new Player("You");
 		human.takeCard(2);
+		
+		Player comp = new Player("Computer");
+		comp.takeCard(2);
+		comp.showHand(1);
+		
 		human.showHand();
 		
 		boolean enough = false;
-		int sumHuman = 0;
-		enough = human.getSum() == 21;
+		
+		enough = human.sum == 21;
 		
 		while (!enough) {
-			Message.print("Взять карту ?", "1 - Да. 2 - Нет");
+			Message.print("Взять карту ?", "1 - Да; 2 - Нет");
 			int ch = Input.readInt();
 			switch (ch) {
 				case 1:
 					human.takeCard(1);
 					human.showHand();
-					sumHuman = human.getSum();
-					if (sumHuman >= 21) {
+					if (human.sum >= 21) {
 						enough = true;
 					}
 					break;
@@ -34,13 +38,31 @@ class Game {
 			}
 		}
 		
-		if (sumHuman == 21) {
-			Message.print("Вы выиграли!");
-		} else if (sumHuman > 21) {
+		if (human.sum > 21) {
 			Message.print("Вы проиграли");
+			Message.print("Сыграть еще?", "1 - Да; 2 - Нет");
+			
+			int res = Input.readInt();
+			return res == 1;
+		}
+			
+		comp.showHand();
+		
+		while (comp.sum < 16) {
+			comp.takeCard(1);
+			comp.showHand();
 		}
 		
-		Message.print("Сыграть еще?", "1 - Да. 2 - Нет");
+		if (comp.sum > 21)
+			Message.print("Вы выиграли!");
+		else if (human.sum == comp.sum)
+			Message.print("Ничья");
+		else if (comp.sum > human.sum)
+			Message.print("Вы проиграли");
+		else 
+			Message.print("Вы выиграли!");
+		
+		Message.print("Сыграть еще?", "1 - Да; 2 - Нет");
 		
 		int res = Input.readInt();
 		return res == 1;

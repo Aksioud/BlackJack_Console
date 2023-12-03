@@ -25,7 +25,7 @@ class Deck {
 		int startNum = 2;
 		boolean needJoker = false;
 		
-		switch(deckSize) {
+		switch (deckSize) {
 			case _24:
 				startNum = 9;
 				break;
@@ -42,7 +42,7 @@ class Deck {
 				break;
 		}
 		
-		for(; startNum <= 10; startNum++) {
+		for (; startNum <= 10; startNum++) {
 			addCards(CardValue.valueOf("_" + startNum));
 		}
 		
@@ -51,7 +51,7 @@ class Deck {
 		addCards(CardValue.King);
 		addCards(CardValue.Ace);
 		
-		if(needJoker) {
+		if (needJoker) {
 			cards.add(new Card(CardValue.Joker));
 			cards.add(new Card(CardValue.Joker));
 		}
@@ -72,7 +72,7 @@ class Deck {
 	void createStack() {
 		stack = new Stack<Card>();
 		
-		for(Card c : cards)
+		for (Card c : cards)
 			stack.push(c);
 	}
 

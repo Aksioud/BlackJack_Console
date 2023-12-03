@@ -7,7 +7,7 @@ class BlackJack {
 		do {
 			Message.print("1 - Начать игру", "2 - Выход");
 			ch = Input.readInt();
-		} while(ch < 1 || ch > 2);
+		} while (ch < 1 || ch > 2);
 		
 		if (ch == 2)
 			System.exit(0);
@@ -27,12 +27,12 @@ class BlackJack {
 		
 		CardValue value = card.getValue();
 		String valueString = value.toString();
-		if(valueString.contains("_")) {
+		if (valueString.contains("_")) {
 			res = Integer.valueOf(valueString.replace("_", ""));
 			return res;
 		}
 		
-		switch(value) {
+		switch (value) {
 			case Ace:
 				res = sum + 11 > 21 ? 1 : 11;
 				break;

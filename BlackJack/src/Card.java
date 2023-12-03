@@ -3,12 +3,12 @@ class Card {
 	private CardValue value;
 	private CardSuit suit;
 	
-	Card (CardValue value, CardSuit suit) {
+	Card(CardValue value, CardSuit suit) {
 		this.value = value;
 		this.suit = suit;
 	}
 	
-	Card (CardValue value) {
+	Card(CardValue value) {
 		this.value = value;
 	}
 	
@@ -44,7 +44,7 @@ class Card {
 		if (this.suit == null) {
 			return Character.MIN_VALUE;
 		}
-		switch(suit) {
+		switch (suit) {
 			case Clubs:
 				return '♠';
 			case Hearts:
