@@ -1,40 +1,23 @@
-import java.util.Scanner;
 
 class BlackJack {
 	
 	public static void main(String[] args) {
 		
-		boolean selected = false;
-		byte choise = 0;
+		int ch = 0;
+		do {
+			Message.print("1 - Начать игру", "2 - Выход");
+			ch = Input.readInt();
+		} while(ch < 1 || ch > 2);
 		
-		Scanner scanner = new Scanner(System.in);
-		while (!selected) {
-			System.out.println("1 - Начать игру");
-			System.out.println("2 - Помощь");
-			System.out.println("3 - Выход");
-			String ch = scanner.nextLine();
-			switch (ch){
-				case "1":
-				case "2":
-				case "3":
-					selected = true;
-					choise = Byte.valueOf(ch);
-			}
+		if (ch == 2)
+			System.exit(0);
+		
+		boolean startGame = true;
+		Game game = new Game();
+		while (startGame) {
+			startGame = game.start();
+			Message.print("", "", "", "");
 		}
-		
-		scanner.close();
-		
-		switch(choise) {
-			case 3:
-				System.exit(0);
-			case 2:
-				break;
-			case 1:
-				Game game = new Game();
-				game.start();
-				break;	
-		}
-		
 	}
 	
 	static int getCardValue(Card card, int sum) {

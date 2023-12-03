@@ -2,8 +2,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Player {
+	private String name;
 	private int sum = 0;
 	private List<Card> hand = new ArrayList<Card>();
+	
+	Player(String name) {
+		this.name = name;
+	}
 	
 	int getSum() {
 		return sum;
@@ -18,14 +23,10 @@ class Player {
 	}
 	
 	void showHand() {
+		System.out.print(name + ": ");
 		for (Card c : hand) {
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 			System.out.print(c.toString() + " ");
 		}
-		System.out.println("     Sum: " + sum);
+		Message.print("     Sum: " + sum);
 	}
 }
