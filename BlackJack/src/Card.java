@@ -9,7 +9,7 @@ class Card {
 	}
 	
 	Card(CardValue value) {
-		this.value = value;
+		this(value, null);
 	}
 	
 	CardValue getValue() {

@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Player {
+	
 	private String name;
 	int sum = 0;
 	private List<Card> hand = new ArrayList<Card>();
@@ -19,11 +20,11 @@ class Player {
 	}
 	
 	void showHand() {
-		System.out.print(name + ": ");
+		Message.print(name + ": ");
 		for (Card c : hand) {
-			System.out.print(c.toString() + " ");
+			Message.print(c.toString() + " ");
 		}
-		Message.print("     Sum: " + this.sum, "");
+		Message.println("     Sum: " + this.sum, "");
 	}
 	
 	void showHand(int count) {
@@ -31,9 +32,9 @@ class Player {
 		int sum = 0;
 		for (int i = 0; i < count; i++) {
 			Card c = hand.get(i);
-			System.out.print(c.toString() + " ");
+			Message.print(c.toString() + " ");
 			sum += BlackJack.getCardValue(c, sum); 
 		}
-		Message.print("     Sum: " + sum, "");
+		Message.println("     Sum: " + sum, "");
 	}
 }

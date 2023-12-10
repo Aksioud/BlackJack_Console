@@ -5,7 +5,7 @@ class BlackJack {
 		
 		int ch = 0;
 		do {
-			Message.print("1 - Начать игру", "2 - Выход");
+			Message.println("1 - Начать игру", "2 - Выход");
 			ch = Input.readInt();
 		} while (ch < 1 || ch > 2);
 		
@@ -16,8 +16,11 @@ class BlackJack {
 		Game game = new Game();
 		while (startGame) {
 			startGame = game.start();
-			Message.print("", "", "", "");
+			Message.println("", "", "", "");
 		}
+		
+		Input.close();
+		Message.close();
 	}
 	
 	static int getCardValue(Card card, int sum) {
